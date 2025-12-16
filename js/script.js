@@ -26,7 +26,7 @@ Buon divertimento  🤓 💬 */
 const countdown = document.getElementById("countdown"); /* COUNTDOWN */
 const numbersList = document.getElementById("numbers-list"); /* <ul> in cui verranno creati i <li> del generaNumeriRandom */
 const answersForm = document.getElementById("answers-form");
-const messageEl = document.getElementById("message");
+const messageEl = document.getElementById("message"); /* varabile utilizzata per tornare messaggi all'utente dopo che ha inserito i numeri */
 const inputFields = answersForm.querySelectorAll("input");/* SALVO I DATI DELL'USERINPUT */
 
 /* SALVO IL RISULTATO DI generaNumeriRandom IN UNA VARIABILE */
@@ -54,3 +54,45 @@ const timer = setInterval(function() {
         /* console.log("tempo scaduto"); DEBUG*/
     }
 }, 1000);
+
+/* PER UTILIZZARE I NUMERI CHE RICEVE INPUT, DOVRO' USARE UN ARRAY?!*/
+// intanto devo "ascoltare" l'input dell'utente
+answersForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const numeriUtente = []; // poi salvare il risultato in un array
+    for (let i = 0; i < inputFields.length; i++) {
+        const valore = Number(inputFields[i].value);
+
+        if (!valore) {
+            messageEl.textContent = "Inserisci solo numeri validi!";
+            return;
+        }
+
+        numeriUtente.push(valore);
+    }
+    const numeriIndovinati = [];
+
+    for (let i = 0; i < numeriUtente.length; i++) { /* QUESTO ARRAY DOVREI CONFRONTARLO CON L'ARRAY numeriDaMemorizzare */
+        if (numeriDaMemorizzare.includes(numeriUtente[i])) { /* INFINE DETERMINARE SE I DUE ARRAY HANNO AL LORO INTERNO GLI STESSI NUMERI */
+            numeriIndovinati.push(numeriUtente[i]);
+        }
+    }
+
+    messageEl.textContent =
+        `Hai indovinato ${numeriIndovinati.length} numeri: ${numeriIndovinati.join(", ")}`;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
