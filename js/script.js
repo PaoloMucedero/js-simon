@@ -39,4 +39,14 @@ for (let i = 0; i < numeriDaMemorizzare.length; i++) {
     li.textContent = numeriDaMemorizzare[i];/* qui (dopo che il ciclo ha creato gli elementi, .textContent inserisce testo in un elemento html) */
     numbersList.appendChild(li);/* qui gli dico dove mettere gli elementi creati, ovvero nel <ul> selezionato sopra */
 }
-console.log(numeriDaMemorizzare);
+/* TIMER */
+let tempo = 10; /* setto variabile iniziale */
+
+const timer = setInterval(function() {
+    console.log(tempo);
+    tempo--;
+    if (tempo < 0){
+        clearInterval(timer);
+        console.log("tempo scaduto");
+    }
+}, 1000);
