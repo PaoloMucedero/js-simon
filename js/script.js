@@ -41,12 +41,16 @@ for (let i = 0; i < numeriDaMemorizzare.length; i++) {
 }
 /* TIMER */
 let tempo = 10; /* setto variabile iniziale */
-
+countdown.textContent = tempo; /* con text content "spingo" il conteggio ad apparire in pagina nell'elemento con id countdown */
 const timer = setInterval(function() {
-    console.log(tempo);
+    /* console.log(tempo); DEBUG*/
     tempo--;
+    countdown.textContent = tempo; /* devo ripeterlo per spingerlo ogni volta che il numero cambia a causa del ciclo */
     if (tempo < 0){
         clearInterval(timer);
-        console.log("tempo scaduto");
+        countdown.textContent = "" 
+        numbersList.classList.add("d-none");    // con .classlist.add("classe da aggiungere") posso aggiungere al volo una classe all'elemento
+        answersForm.classList.remove("d-none"); // .classList.remove("d-none") => qui invece sto rimuovendo una classe
+        /* console.log("tempo scaduto"); DEBUG*/
     }
 }, 1000);
