@@ -21,3 +21,22 @@ Come detto in allAgato il markup di partenza così vi concentrate sulla logica..
 (cre scriverete prima del codice... vero?... VERO?? 🤞 😅 )
 
 Buon divertimento  🤓 💬 */
+
+/* SELEZIONO ELEMENTI HTML SUI QUALI DOVRò AGIRE */
+const countdown = document.getElementById("countdown"); /* COUNTDOWN */
+const numbersList = document.getElementById("numbers-list"); /* <ul> in cui verranno creati i <li> del generaNumeriRandom */
+const answersForm = document.getElementById("answers-form");
+const messageEl = document.getElementById("message");
+const inputFields = answersForm.querySelectorAll("input");/* SALVO I DATI DELL'USERINPUT */
+
+/* SALVO IL RISULTATO DI generaNumeriRandom IN UNA VARIABILE */
+const numeriDaMemorizzare = generaNumeriRandom(5, 1, 9);
+console.log("Numeri da memorizzare:", numeriDaMemorizzare);/* DEBUG */
+
+/* ORA DEVO USARE QUESTI VALORI PER MOSTRARLI IN PAGINA */
+for (let i = 0; i < numeriDaMemorizzare.length; i++) {
+    const li = document.createElement("li"); /* così non sono obbligato a modificare manualmente html. Ci penserà il ciclo a creare gli elementi */
+    li.textContent = numeriDaMemorizzare[i];/* qui (dopo che il ciclo ha creato gli elementi, .textContent inserisce testo in un elemento html) */
+    numbersList.appendChild(li);/* qui gli dico dove mettere gli elementi creati, ovvero nel <ul> selezionato sopra */
+}
+console.log(numeriDaMemorizzare);
